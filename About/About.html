@@ -1,4 +1,4 @@
-function scrollToSlide(<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,7 +75,7 @@ function scrollToSlide(<!DOCTYPE html>
             border-radius: 2px;
         }
 
-        /* Slide 1: About Me */
+        /* Slide 1: About Me - FIXED SIZING */
         .about-content {
             display: grid;
             grid-template-columns: 280px 1fr;
@@ -143,7 +143,7 @@ function scrollToSlide(<!DOCTYPE html>
         .details-section {
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 35px;
         }
 
         .section-header {
@@ -173,7 +173,8 @@ function scrollToSlide(<!DOCTYPE html>
         }
 
         .image-card {
-            aspect-ratio: 1;
+            width: 100%;
+            height: 160px; /* Fixed consistent height */
             background: rgba(244, 228, 184, 0.1);
             border: 2px solid #D4AF37;
             border-radius: 20px;
@@ -185,7 +186,7 @@ function scrollToSlide(<!DOCTYPE html>
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            padding: 15px;
+            padding: 0; /* Remove padding to let image fill */
         }
 
         .image-card:hover {
@@ -196,18 +197,14 @@ function scrollToSlide(<!DOCTYPE html>
         }
 
         .card-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 15px;
+            border-radius: 12px;
             object-fit: cover;
             background: #D4AF37;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6B7B52;
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 8px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* Remove fixed width/height to allow inline attributes */
         }
 
         .card-label {
@@ -216,9 +213,20 @@ function scrollToSlide(<!DOCTYPE html>
             font-size: 14px;
             text-align: center;
             line-height: 1.3;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(107, 123, 82, 0.9);
+            padding: 8px 12px;
+            border-radius: 8px;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(244, 228, 184, 0.3);
+            white-space: nowrap;
         }
 
-        /* Slide 2: Journey */
+        /* Slide 2: Journey - FIXED SIZING */
         .journey-content {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -263,7 +271,7 @@ function scrollToSlide(<!DOCTYPE html>
 
         .journey-image-card {
             width: 100%;
-            height: 160px;
+            height: 180px; /* Fixed consistent height */
             background: rgba(244, 228, 184, 0.1);
             border: 2px solid #D4AF37;
             border-radius: 18px;
@@ -284,20 +292,14 @@ function scrollToSlide(<!DOCTYPE html>
         }
 
         .journey-image {
-            width: 100%;
-            height: 100%;
             border-radius: 12px;
             object-fit: cover;
             background: #8A9A6B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #F4E4B8;
-            font-size: 16px;
-            font-weight: 600;
+            display: block;
+            /* Remove fixed width/height to allow inline attributes */
         }
 
-        /* Slide 3: Manager */
+        /* Slide 3: Manager - FIXED SIZING */
         .manager-slide {
             background: #6B7B52;
             color: #F4E4B8;
@@ -310,20 +312,24 @@ function scrollToSlide(<!DOCTYPE html>
             align-items: center;
             justify-content: flex-start;
             position: relative;
-            padding-top: 40px;
+            padding-top: 20px;
         }
 
         .leadership-images {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin-bottom: 80px;
             justify-items: center;
+            z-index: 10;
         }
 
         .leadership-image-card {
-            width: 280px;
-            height: 180px;
+            width: 350px; /* Increased width */
+            height: 220px; /* Increased height */
             background: rgba(244, 228, 184, 0.1);
             border: 2px solid #D4AF37;
             border-radius: 20px;
@@ -342,26 +348,21 @@ function scrollToSlide(<!DOCTYPE html>
         }
 
         .leadership-image {
-            width: 100%;
-            height: 100%;
             border-radius: 15px;
             object-fit: cover;
             background: #8A9A6B;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #F4E4B8;
-            font-size: 16px;
-            font-weight: 600;
+            display: block;
+            /* Remove fixed width/height to allow inline attributes */
         }
 
         .concepts-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 20px;
         }
 
         .concept-circle {
@@ -399,12 +400,12 @@ function scrollToSlide(<!DOCTYPE html>
             text-align: center;
         }
 
-        /* Positioning for the circles - better spaced */
-        .concept-1 { top: 0; left: 50%; transform: translateX(-50%); }
-        .concept-2 { top: 50%; right: 50px; transform: translateY(-50%); }
-        .concept-3 { bottom: 0; right: 120px; }
-        .concept-4 { bottom: 0; left: 120px; }
-        .concept-5 { top: 50%; left: 50px; transform: translateY(-50%); }
+        /* Positioning for the circles - with proper clearance from GIFs */
+        .concept-1 { top: 5px; left: 50%; transform: translateX(-50%); }
+        .concept-2 { top: 50%; right: 25px; transform: translateY(-50%); }
+        .concept-3 { bottom: 5px; right: 115px; }
+        .concept-4 { bottom: 5px; left: 115px; }
+        .concept-5 { top: 50%; left: 25px; transform: translateY(-50%); }
 
         .navigation {
             position: fixed;
@@ -475,9 +476,71 @@ function scrollToSlide(<!DOCTYPE html>
             }
         }
 
-        /* File input styling */
-        .file-input {
-            display: none;
+        /* Default sizes when no inline dimensions specified */
+        .card-image:not([width]):not([height]) {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .journey-image:not([width]):not([height]) {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .leadership-image:not([width]):not([height]) {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .journey-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .leadership-images {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 30px;
+                min-height: auto;
+            }
+            
+            .slide-title {
+                font-size: 36px;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-card {
+                height: 140px;
+            }
+            
+            .journey-image-card {
+                height: 160px;
+            }
+            
+            .leadership-image-card {
+                width: 280px;
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -489,7 +552,7 @@ function scrollToSlide(<!DOCTYPE html>
             <div class="about-content">
                 <div class="profile-section">
                     <div class="profile-image-container">
-                        <img class="profile-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Profile Photo">
+                        <img class="profile-image" src="../Images/Profile image.jpg" alt="Profile Photo">
                     </div>
                     <div class="profile-quote">
                         "Hi I am Clint -Jessica Banda. I believe in community, loyalty, and positive change."
@@ -501,15 +564,15 @@ function scrollToSlide(<!DOCTYPE html>
                         <h3 class="section-header">Values</h3>
                         <div class="card-grid">
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=150&h=150&fit=crop" alt="Community">
+                                <img class="card-image" src="../Images/community.jpg" width="250" height="200" alt="Community">
                                 <div class="card-label">Community</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=150&fit=crop" alt="Positive Change">
+                                <img class="card-image" src="../Images/Iec (3).jpg" width="250" height="200" alt="Positive Change">
                                 <div class="card-label">Positive Change</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=150&h=150&fit=crop" alt="Loyalty">
+                                <img class="card-image" src="../Images/loyalty.jpg" width="300" height="160" alt="Loyalty">
                                 <div class="card-label">Loyalty</div>
                             </div>
                         </div>
@@ -519,15 +582,15 @@ function scrollToSlide(<!DOCTYPE html>
                         <h3 class="section-header">Hobbies</h3>
                         <div class="card-grid">
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=150&h=150&fit=crop" alt="Arts & Culture">
+                                <img class="card-image" src="../Images/arts and culture.png" width="300" height="160" alt="Arts & Culture">
                                 <div class="card-label">Arts & Culture</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop" alt="Parkrun">
+                                <img class="card-image" src="../Images/Park run.png" width="250" height="158" alt="Parkrun">
                                 <div class="card-label">Parkrun</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=150&h=150&fit=crop" alt="Creative Arts">
+                                <img class="card-image" src="../Images/creative arts.jpg" width="300" height="160" alt="Creative Arts">
                                 <div class="card-label">Creative Arts</div>
                             </div>
                         </div>
@@ -537,15 +600,15 @@ function scrollToSlide(<!DOCTYPE html>
                         <h3 class="section-header">Interesting Facts</h3>
                         <div class="card-grid">
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=150&h=150&fit=crop" alt="Man United Fan">
+                                <img class="card-image" src="../Images/Man u.png" width="250" height="180" alt="Man United Fan">
                                 <div class="card-label">Man United Fan<br>15 Years</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=150&h=150&fit=crop" alt="Bungee Jump">
+                                <img class="card-image" src="../Images/Bungee.jpg" width="250" height="160" alt="Bungee Jump">
                                 <div class="card-label">Bungee Jump</div>
                             </div>
                             <div class="image-card">
-                                <img class="card-image" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=150&h=150&fit=crop" alt="Table Mountain Hiker">
+                                <img class="card-image" src="../Images/Hike.jpg" width="300" height="160" alt="Table Mountain Hiker">
                                 <div class="card-label">Table Mountain<br>Hiker</div>
                             </div>
                         </div>
@@ -562,13 +625,13 @@ function scrollToSlide(<!DOCTYPE html>
                     <h2 class="column-header">Before</h2>
                     <div class="journey-images">
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&h=200&fit=crop" alt="Before Image 1">
+                            <img class="journey-image" src="../Images/Before 1.jpg" width="320" height="160" alt="Before Image 1">
                         </div>
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1486312338219-ce68e2c6b261?w=350&h=200&fit=crop" alt="Before Image 2">
+                            <img class="journey-image" src="../Images/Before 2.jpg" width="320" height="160" alt="Before Image 2">
                         </div>
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=350&h=200&fit=crop" alt="Before Image 3">
+                            <img class="journey-image" src="../Images/Before 3.jpg" width="320" height="160" alt="Before Image 3">
                         </div>
                     </div>
                 </div>
@@ -577,13 +640,10 @@ function scrollToSlide(<!DOCTYPE html>
                     <h2 class="column-header">During</h2>
                     <div class="journey-images">
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=350&h=200&fit=crop" alt="During Image 1">
+                            <img class="journey-image" src="../Images/During 1.gif" width="190" height="185" alt="During Image 1">
                         </div>
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=350&h=200&fit=crop" alt="During Image 2">
-                        </div>
-                        <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=350&h=200&fit=crop" alt="During Image 3">
+                            <img class="journey-image" src="../Images/During 2.jpg" width="190" height="170" alt="During Image 2">
                         </div>
                     </div>
                 </div>
@@ -592,13 +652,13 @@ function scrollToSlide(<!DOCTYPE html>
                     <h2 class="column-header">Clients</h2>
                     <div class="journey-images">
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=350&h=200&fit=crop" alt="Client Image 1">
+                            <img class="journey-image" src="../Images/Client 1.png" width="320" height="160" alt="Client Image 1">
                         </div>
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=350&h=200&fit=crop" alt="Client Image 2">
+                            <img class="journey-image" src="../Images/Client 2.jpg" width="130" height="140" alt="Client Image 2">
                         </div>
                         <div class="journey-image-card">
-                            <img class="journey-image" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=350&h=200&fit=crop" alt="Client Image 3">
+                            <img class="journey-image" src="../Images/Client 3.jpg" width="320" height="160" alt="Client Image 3">
                         </div>
                     </div>
                 </div>
@@ -611,10 +671,10 @@ function scrollToSlide(<!DOCTYPE html>
             <div class="manager-content">
                 <div class="leadership-images">
                     <div class="leadership-image-card">
-                        <img class="leadership-image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=350&h=200&fit=crop" alt="Leadership Image 1">
+                        <img class="leadership-image" src="../Images/LEARNING (1).gif" width="330" height="200" alt="Leadership Image 1">
                     </div>
                     <div class="leadership-image-card">
-                        <img class="leadership-image" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=350&h=200&fit=crop" alt="Leadership Image 2">
+                        <img class="leadership-image" src="../Images/sunrise.gif" width="330" height="200" alt="Leadership Image 2">
                     </div>
                 </div>
                 
@@ -651,25 +711,6 @@ function scrollToSlide(<!DOCTYPE html>
     </div>
 
     <script>
-        function uploadImage(imgElement) {
-            const fileInput = imgElement.nextElementSibling;
-            fileInput.click();
-        }
-
-        function handleImageUpload(event, imgElement) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imgElement.src = e.target.result;
-                    imgElement.style.display = 'block';
-                    imgElement.innerHTML = '';
-                    imgElement.onerror = null;
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
         function scrollToSlide(slideNumber) {
             const slide = document.getElementById(`slide${slideNumber}`);
             slide.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -684,7 +725,6 @@ function scrollToSlide(<!DOCTYPE html>
         window.addEventListener('scroll', () => {
             const slides = document.querySelectorAll('.slide');
             const windowHeight = window.innerHeight;
-            const scrollY = window.scrollY;
             
             slides.forEach((slide, index) => {
                 const slideRect = slide.getBoundingClientRect();
@@ -697,3 +737,6 @@ function scrollToSlide(<!DOCTYPE html>
                 }
             });
         });
+    </script>
+</body>
+</html>
